@@ -1,0 +1,49 @@
+---
+import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+
+import Terminal from "@icon/terminal.png";
+
+const Links: { label: string; href: string }[] = [
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/projects/" },
+  { label: "Sertifications", href: "/sertifications/" },
+  { label: "Blog", href: "/blog/" },
+];
+---
+
+<header
+  class="flex flex-col lg:flex-row justify-between items-center p-5 lg:px-72 fixed w-full z-50 bg-white"
+>
+  <Astronav>
+    <div class="flex w-full lg:w-auto items-center justify-between">
+      <a href="/" class="text-lg flex items-center gap-2">
+        <img src={Terminal} alt="LogoUrl" width="42" />
+        <span class="font-bold text-slate-800">Afrizal</span>
+      </a>
+      <div class="block lg:hidden">
+        <MenuIcon class="w-4 h-4 text-gray-800" />
+      </div>
+    </div>
+    <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
+      <ul class="flex flex-col px-1 lg:flex-row lg:gap-3 items-center">
+        {
+          Links.map(({ label, href }) => (
+            <li>
+              <a
+                href={href}
+                class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="#" class="border-2 px-5 py-2 rounded hover:border-red-500"
+            >Contact Me</a
+          >
+        </li>
+      </ul>
+    </MenuItems>
+  </Astronav>
+</header>
